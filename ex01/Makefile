@@ -5,26 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: otidahoh <otidahoh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/07/20 15:18:11 by otidahoh          #+#    #+#              #
-#    Updated: 2026/07/20 15:26:03 by otidahoh         ###   ########.fr        #
+#    Created: 2026/07/20 18:10:37 by otidahoh          #+#    #+#              #
+#    Updated: 2026/07/20 18:10:55 by otidahoh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
 CXX = c++
+
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRC = main.cpp Contact.cpp PhoneBook.cpp
+
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NMAE): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
