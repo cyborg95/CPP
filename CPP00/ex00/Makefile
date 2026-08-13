@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: otidahoh <otidahoh@student.42.fr>          +#+  +:+       +#+         #
+#    By: cyborg95 <cyborg95@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/20 15:18:11 by otidahoh          #+#    #+#              #
-#    Updated: 2026/07/20 15:26:03 by otidahoh         ###   ########.fr        #
+#    Updated: 2026/08/13 15:18:07 by cyborg95         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NMAE): $(OBJS)
+$(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
