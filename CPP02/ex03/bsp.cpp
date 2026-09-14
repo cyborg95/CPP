@@ -1,11 +1,23 @@
 #include "Point.hpp"
 
-bool bsp(const Point& a, const Point& b, const Point& c, const Point& point) {
-    Fixed area_abc = (b.getX() - a.getX()) * (c.getY() - a.getY()) - (c.getX() - a.getX()) * (b.getY() - a.getY());
-    Fixed area_abp = (b.getX() - a.getX()) * (point.getY() - a.getY()) - (point.getX() - a.getX()) * (b.getY() - a.getY());
-    Fixed area_acp = (c.getX() - a.getX()) * (point.getY() - a.getY()) - (point.getX() - a.getX()) * (c.getY() - a.getY());
-    Fixed area_bcp = (c.getX() - b.getX()) * (point.getY() - b.getY()) - (point.getX() - b.getX()) * (c.getY() - b.getY());
+bool bsp(const Point& a, const Point& b,
+         const Point& c, const Point& point)
+{
+    Fixed abp =
+        (b.getX() - a.getX()) * (point.getY() - a.getY())
+        - (b.getY() - a.getY()) * (point.getX() - a.getX());
 
-    return ((area_abc > 0 && area_abp > 0 && area_acp > 0 && area_bcp > 0) ||
-            (area_abc < 0 && area_abp < 0 && area_acp < 0 && area_bcp < 0));
+    Fixed bcp =
+        (c.getX() - b.getX()) * (point.getY() - b.getY())
+        - (c.getY() - b.getY()) * (point.getX() - b.getX());
+
+    Fixed cap =
+        (a.getX() - c.getX()) * (point.getY() - c.getY())
+        - (a.getY() - c.getY()) * (point.getX() - c.getX());
+
+    if (abp == 0 || bcp == 0 || cap == 0)
+        return false;
+
+    return (abp > 0 && bcp > 0 && cap > 0)
+        || (abp < 0 && bcp < 0 && cap < 0);
 }

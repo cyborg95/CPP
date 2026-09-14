@@ -110,8 +110,8 @@ Fixed Fixed::operator*(const Fixed& other) const
 {
     Fixed result;
 
-    result.value =
-        (value * other.value) >> fractional_bits;
+    result.value = static_cast<int>((static_cast<long long>(value)
+    * other.value) >> fractional_bits);
 
     return result;
 }
